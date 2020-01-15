@@ -7,3 +7,10 @@ before_install:
 
 script:
   - docker run -e CI=true mukasa/docker-react npm run test
+
+deploy:
+  provider: azure_web_apps
+  username: "$AZ_DEPLOY_USER"       # If AZURE_WA_USERNAME isn't set
+  password: "$AZ_DEPLOY_PWD"   # If AZURE_WA_PASSWORD isn't set
+  site: mks-docker-react-demo       # If AZURE_WA_SITE isn't set
+  on: master
